@@ -30,15 +30,16 @@ namespace SSOTest.Client
                 AuthenticationType = CookieAuthenticationDefaults.AuthenticationType,
                 CookieHttpOnly = true
             });
+            var secret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".ToSha256();
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
                 Authority = "http://localhost:5000",
-                ClientId = "admin_ui",
-                ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".ToSha256(),
+                ClientId = "mvc",
+                ClientSecret = secret,
                 RedirectUri = "http://localhost:5001/signin-oidc",
                 PostLogoutRedirectUri = "http://localhost:5001/signout-oidc",
                 ResponseType = "code id_token",
-                Scope = "openid profile admin_api offline_access",
+                Scope = "openid profile",
                 RequireHttpsMetadata = false,
                 SignInAsAuthenticationType = CookieAuthenticationDefaults.AuthenticationType,
                 Notifications = new OpenIdConnectAuthenticationNotifications
@@ -59,7 +60,7 @@ namespace SSOTest.Client
                         {
                             Address = disco.TokenEndpoint,
                             ClientId = "mvc",
-                            ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".ToSha256(),
+                            ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0",
                             Code = n.Code,
                             RedirectUri = n.RedirectUri
                         });
@@ -80,7 +81,7 @@ namespace SSOTest.Client
                         id.AddClaims(userInfoResponse.Claims);
                         id.AddClaim(new Claim("access_token", tokenResponse.AccessToken));
                         id.AddClaim(new Claim("expires_at", DateTime.UtcNow.AddSeconds(tokenResponse.ExpiresIn).ToString()));
-                        id.AddClaim(new Claim("refresh_token", tokenResponse.RefreshToken));
+                        //id.AddClaim(new Claim("refresh_token", tokenResponse.RefreshToken));
                         id.AddClaim(new Claim("id_token", n.ProtocolMessage.IdToken));
                         id.AddClaim(new Claim("sid", n.AuthenticationTicket.Identity.FindFirst("sid").Value));
 
