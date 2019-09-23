@@ -51,7 +51,7 @@ tags: Asp.Net MVC  Identity Server
     using IdentityServer4.Models;
     using IdentityServer4.Test;
     using System.Collections.Generic;
-    using System.Security.Claims;
+    using System.Security.Claims;https://github.com/xyfy/UseMvc5ConnectIdentity4/blob/master/readme.md
 
     namespace IdentityServer
     {
@@ -189,10 +189,10 @@ tags: Asp.Net MVC  Identity Server
 
 1. 打开解决方案SsoTest.sln
 2. 在解决方案上右键->添加->新建项目，创建MVC5项目,名为SSOTest.Client
-   ![](/images/20190920-1.jpg)
-   ![](/images/20190920-2.jpg)
-   ![](/images/20190920-3.jpg)
-   ![](/images/20190920-4.jpg)
+   ![](https://github.com/xyfy/UseMvc5ConnectIdentity4/raw/master/images/20190920-1.jpg)
+   ![](https://github.com/xyfy/UseMvc5ConnectIdentity4/raw/master/images/20190920-2.jpg)
+   ![](https://github.com/xyfy/UseMvc5ConnectIdentity4/raw/master/images/20190920-3.jpg)
+   ![](https://github.com/xyfy/UseMvc5ConnectIdentity4/raw/master/images/20190920-4.jpg)
 
 ### 配置MVC5接入Identity Server
 
@@ -204,6 +204,7 @@ tags: Asp.Net MVC  Identity Server
     Install-Package IdentityModel -Version 3.10.10
     Install-Package Microsoft.Owin.Security.Cookies
     Install-Package Microsoft.Owin.Security.OpenIdConnect
+    Install-Package Microsoft.Owin.Host.SystemWeb
     ```
 3. 新增OWIN的Startup.cs文件
    ![](/images/20190920-6.jpg)
