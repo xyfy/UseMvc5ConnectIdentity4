@@ -76,7 +76,31 @@ namespace IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         "api1"
                     }
-                }};
+                },
+                new Client
+                {
+                      ClientId = "Test",
+                    ClientName = "Test",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+                    AccessTokenLifetime = 60*60,
+                    AccessTokenType = AccessTokenType.Jwt,
+                    RedirectUris =
+                    {
+                        "https://localhost:5002/signin-callback.html",
+                        "https://localhost:5002/silent-callback.html"
+                    },
+                    PostLogoutRedirectUris = { "https://localhost:5002" },
+                    AllowedCorsOrigins = { "https://localhost:5002" },
+                    RequireConsent = false,
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "webapi"
+                    }
+                }
+            };
         }
     }
 }
