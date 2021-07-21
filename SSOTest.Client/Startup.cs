@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Helpers;
@@ -36,8 +36,8 @@ namespace SSOTest.Client
                 Authority = "http://localhost:5000",
                 ClientId = "mvc",
                 ClientSecret = secret,
-                RedirectUri = "http://localhost:5002/signin-oidc",
-                PostLogoutRedirectUri = "http://localhost:5002/signout-oidc",
+                RedirectUri = "http://localhost:5001/signin-oidc",
+                PostLogoutRedirectUri = "http://localhost:5001/signout-oidc",
                 ResponseType = "code id_token",
                 Scope = "openid profile",
                 RequireHttpsMetadata = false,
@@ -59,7 +59,7 @@ namespace SSOTest.Client
                         var tokenResponse = await client.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest()
                         {
                             Address = disco.TokenEndpoint,
-                            ClientId = "vuejsclient",
+                            ClientId = "mvc",
                             ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0",
                             Code = n.Code,
                             RedirectUri = n.RedirectUri
